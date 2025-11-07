@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sridharan Mayakoothan</title>
+    <link rel="icon" type="image/x-icon" href="img/brandicon.jpg" />
+
+    <style>
+      :root {
+        --bg: #0b0b0c;
+        --glass: rgba(12, 12, 14, 0.75);
+        --text: #e8e8ea;
+        --muted: #b3b3b7;
+        --accent: #f0c058; /* gold-ish */
+        --ring: #2a2a33;
+        --radius: 14px;
+        --maxw: 1200px;
+        --h: 64px; /* header height */
+      }
+
+      /* smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        color: #fff;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji";
+      }
+
+      /* fixed header */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--h);
+        backdrop-filter: blur(10px);
+        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        border-bottom: 1px solid var(--ring);
+      }
+      .site-header .container {
+        height: 100%;
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      /* brand */
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--text);
+      }
+      .brand-icon {
+        width: 42px;
+        height: 36px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        /*  background: radial-gradient(120% 120% at 20% 20%, #ffe59a, #b8860b 70%, #5a3d00); 
+    color:#0b0b0c; border:1px solid #7a5a14;
+    box-shadow: 0 0 0 2px rgba(240,192,88,0.25), 0 10px 24px rgba(0,0,0,.35); */
+        letter-spacing: 0.5px;
+      }
+      .brand-name {
+        font-size: 22px;
+        letter-spacing: 0.3px;
+      }
+
+      /* nav */
+      .nav {
+        display: flex;
+        gap: 28px;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 6px 0;
+        position: relative;
+      }
+      .nav a:hover,
+      .nav a.active {
+        color: var(--text);
+      }
+      .nav a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      /* mobile button */
+      .nav-toggle {
+        display: none;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--ring);
+        background: transparent;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .nav-toggle .bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        margin: 5px auto;
+        background: var(--text);
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+      .nav-open .nav-toggle .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-open .nav-toggle .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-open .nav-toggle .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* mobile layout */
+      @media (max-width: 768px) {
+        .nav {
+          position: fixed;
+          top: var(--h);
+          right: 12px;
+          left: 12px;
+          background: #121216;
+          border: 1px solid var(--ring);
+          border-radius: var(--radius);
+          display: none;
+          flex-direction: column;
+          gap: 4px;
+          padding: 10px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav a {
+          padding: 12px 10px;
+          border-radius: 10px;
+        }
+        .nav a:hover {
+          background: #1a1b22;
+        }
+        .nav-toggle {
+          display: block;
+        }
+        .nav.show {
+          display: flex;
+        }
+      }
+
+      /* page content spacing so it doesn't hide under fixed header */
+      main {
+        padding-top: calc(var(--h) + 24px);
+      }
+      .section {
+        min-height: 100vh;
+        padding: 40px 20px;
+        text-align: center;
+        max-width: var(--maxw);
+        margin: 0 auto;
+        scroll-margin-top: calc(var(--h) + 16px); /* fixes anchor offset */
+        border-bottom: 1px solid #1a1a22;
+      }
+
+      .site-footer {
+        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        border-top: 1px solid #1a1a22;
+        padding: 30px 20px;
+        margin-top: 60px;
+        text-align: center;
+      }
+      .site-footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        color: #9c9ca3;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container">
+        <!-- left: brand icon + name -->
+        <a href="#" class="brand">
+          <span class="brand-icon" aria-hidden="true"
+            ><img
+              src="img/brandicon-transparent.png"
+              alt="Sridharan logo"
+              class="brand-icon"
+              style="background: none; border: none; box-shadow: none"
+            />
+          </span>
+          <span class="brand-name">SRIDHARAN MAYAKOOTHAN</span>
+        </a>
+
+        <!-- mobile toggle -->
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <!-- right: nav links -->
+        <nav class="nav" role="navigation">
+          <a href="#about">ABOUT</a>
+          <a href="#experience">EXPERIENCE</a>
+          <a href="#skills">SKILLS</a>
+          <a href="#projects">PROJECTS</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div>
+          <br />
+          <br />
+          <br />
+          <h1>✨ Something cool is on the way ✨</h1>
+          <p>Thank you for visiting.!<br /></p>
+        </div>
+      </section>
+      <section id="about" class="section">ABOUT</section>
+      <section id="experience" class="section">EXPERIENCE</section>
+      <section id="skills" class="section">SKILLS</section>
+      <section id="projects" class="section">PROJECTS</section>
+      <section id="contact" class="section">CONTACT</section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">✨ Crafted & Created by SM ✨</div>
+    </footer>
+
+    <script>
+      // mobile menu toggle
+      const toggleBtn = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+      const header = document.querySelector(".site-header");
+
+      toggleBtn?.addEventListener("click", () => {
+        const open = header.classList.toggle("nav-open");
+        toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        nav.classList.toggle("show", open);
+      });
+
+      // close the menu when a link is clicked (mobile)
+      nav?.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => {
+          header.classList.remove("nav-open");
+          nav.classList.remove("show");
+          toggleBtn?.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // highlight active link on scroll
+      const links = [...document.querySelectorAll(".nav a")];
+      const sections = links
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      const setActive = () => {
+        let current = null;
+        const y =
+          window.scrollY +
+          (parseInt(
+            getComputedStyle(document.documentElement).getPropertyValue("--h")
+          ) || 64) +
+          20;
+        for (const sec of sections) {
+          if (sec.offsetTop <= y) current = sec;
+        }
+        links.forEach((l) =>
+          l.classList.toggle(
+            "active",
+            current && l.getAttribute("href") === "#" + current.id
+          )
+        );
+      };
+
+      window.addEventListener("scroll", setActive, { passive: true });
+      window.addEventListener("load", setActive);
+    </script>
+  </body>
+</html>
