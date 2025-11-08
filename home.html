@@ -26,11 +26,14 @@
 
       body {
         margin: 0;
-        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        /* background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%); */
+        background: linear-gradient(135deg, #081f2c 0%, #0b4f61 100%);
         color: #fff;
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
           "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
           "Segoe UI Emoji";
+        font-size: 20px;
+        line-height: 1.5;
       }
 
       /* fixed header */
@@ -42,7 +45,8 @@
         z-index: 1000;
         height: var(--h);
         backdrop-filter: blur(10px);
-        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        /* background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%); */
+        background: linear-gradient(135deg, #081f2c 0%, #0b4f61 100%);
         border-bottom: 1px solid var(--ring);
       }
       .site-header .container {
@@ -65,8 +69,8 @@
         color: var(--text);
       }
       .brand-icon {
-        width: 42px;
-        height: 36px;
+        width: 50px;
+        height: 45px;
         border-radius: 999px;
         display: grid;
         place-items: center;
@@ -105,7 +109,8 @@
         right: 0;
         bottom: -8px;
         height: 2px;
-        background: var(--accent);
+        /* background: var(--accent); */
+        background: #f0c058;
         border-radius: 2px;
       }
 
@@ -179,11 +184,18 @@
         max-width: var(--maxw);
         margin: 0 auto;
         scroll-margin-top: calc(var(--h) + 16px); /* fixes anchor offset */
-        border-bottom: 1px solid #1a1a22;
+        /* border-bottom: 1px solid #1a1a22; */
+      }
+
+      .section .intro {
+        font-size: 60px;
+        font-weight: 400;
+        color: var(--text);
       }
 
       .site-footer {
-        background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%);
+        /* background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%); */
+        background: linear-gradient(135deg, #081f2c 0%, #0b4f61 100%);
         border-top: 1px solid #1a1a22;
         padding: 30px 20px;
         margin-top: 60px;
@@ -194,6 +206,33 @@
         margin: 0 auto;
         color: #9c9ca3;
         font-size: 14px;
+      }
+      .aboutme {
+        text-align: justify;
+        font-size: 18px;
+        line-height: 1.5;
+        color: rgba(148, 163, 184, 1);
+      }
+
+      .hex {
+        width: 200px;
+        aspect-ratio: 1;
+        clip-path: polygon(
+          25% 6.7%,
+          75% 6.7%,
+          100% 50%,
+          75% 93.3%,
+          25% 93.3%,
+          0% 50%
+        );
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     </style>
   </head>
@@ -237,15 +276,52 @@
     </header>
     <main>
       <section class="section">
-        <div>
+        <div class="intro">
+          <br />
+
+          <br />
+          Hi, I'm Sridharan<br />
+          <!-- <h1>✨ Something cool is on the way ✨</h1>
+          <p>Thank you for visiting.!<br /></p> -->
+        </div>
+
+        I engineer Enterprise Applications & Cloud-Native Microservices.
+      </section>
+      <section id="about" class="section">
+        Every journey has a story — here’s mine.
+        <br />
+
+        <div class="hex">
+          <img src="img/my-photo.jpg" alt="me" />
+        </div>
+        <div class="aboutme">
+          <br />
+          I’m Sridharan — an Enterprise Application Engineer specializing in
+          backend systems, cloud-native microservices and distributed platforms.
           <br />
           <br />
+          Over the last 11 years, I’ve been building enterprise solutions using
+          Java, Spring Boot, RESTful APIs, event-driven systems, and AWS cloud
+          services. I enjoy working on complex backend architecture, designing
+          clean systems, and writing code that performs reliably at scale.
           <br />
-          <h1>✨ Something cool is on the way ✨</h1>
-          <p>Thank you for visiting.!<br /></p>
+          <br />
+          My focus is on building robust, maintainable, production-grade
+          software that solves real business problems. I value clarity in
+          design, simplicity in implementation, and continuous improvement
+          through iteration.
+          <br />
+          <br />
+          Right now, I’m sharpening my cloud engineering stack further —
+          especially Kubernetes, advanced AWS patterns, and scalable
+          microservices practices — while transitioning toward technical
+          leadership roles.
+          <br />
+          <br />
+          Outside work, I explore writing and creative storytelling to keep my
+          perspective fresh.
         </div>
       </section>
-      <section id="about" class="section">ABOUT</section>
       <section id="experience" class="section">EXPERIENCE</section>
       <section id="skills" class="section">SKILLS</section>
       <section id="projects" class="section">PROJECTS</section>
