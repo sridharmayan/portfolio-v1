@@ -8,6 +8,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        /**/
         /* background: linear-gradient(135deg, #0a0f24 0%, #1c2b4a 100%); */
         background: linear-gradient(135deg, #081f2c 0%, #0b4f61 100%);
         color: #fff;
@@ -56,16 +57,7 @@
       }
     </style>
   </head>
-  <script>
-    // after 4 seconds go to index.html
-    // when page loads -> fade-in is already default
-    setTimeout(function () {
-      document.body.classList.add("fade-out");
-      setTimeout(function () {
-        window.location.href = "home.html";
-      }, 950); // wait for fade animation
-    }, 3500); //  original delay
-  </script>
+  <script src="brandfade.js"></script>
   <body>
     <div class="loader">
       <p style="text-align: center">
