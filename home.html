@@ -240,6 +240,10 @@
         height: 100%;
         object-fit: cover;
       }
+
+      .full {
+        grid-column: 1 / -1;
+      }
     </style>
   </head>
   <body>
@@ -336,12 +340,19 @@
       <div class="contact">
         </br>
       Leave a message below, and i'll get back to you as soon as possible.
-      </br>
+      <div style="display: flex; align-items: center"></div>
+      
       <div style="text-align: left; display: inline-block; margin-top: 20px;">
-      Name<br><input type="text" name="name" /></br></br>
-      Email<br><input type="email" name="email" /></br></br>
-      Message<br><textarea name="message" rows="7" cols="50"></textarea></br>
-      <button type="submit">Send Message</button>
+        
+        
+      Name<br><input type="text" name="name" size = "40" style="width: 300px; height: 30px;" maxlength="40" placeholder=""/>
+    </br></br>
+    
+      Email<br><input type="email" name="email" size = "40" style="width: 300px; height: 30px;"  maxlength="40" placeholder="" /></br></br>
+      Subject<br><input type="text" name="subject" size = "40" style="width: 300px; height: 30px;"  maxlength="40" placeholder=""/></br></br>
+      Message<br><textarea name="message" rows="7" cols="70" placeholder=""></textarea></br>
+      <br>
+      <button type="submit" size = "40" style="width: 200px; height: 50px;" >Send Message</button>
       </div>
       </div>
       </section>
@@ -351,7 +362,7 @@
       <div class="container">✨ Crafted & Created by SM ✨</div>
     </footer>
 
-    <script  src="main.js"></script>
+    <script src="main.js"></script>
       
   </body>
 </html>
