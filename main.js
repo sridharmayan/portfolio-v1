@@ -1,3 +1,5 @@
+console.log("main.js loaded");
+
 // mobile menu toggle
       const toggleBtn = document.querySelector(".nav-toggle");
       const nav = document.querySelector(".nav");
@@ -42,6 +44,45 @@
           )
         );
       };
+
+    // send message button
+
+    const RECEIVER_EMAIL = "sridharan.mayan@gmail.com";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // stop form reload
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subjectRaw = document.getElementById("subject").value.trim();
+    const messageRaw = document.getElementById("message").value.trim();
+
+    if (!name || !email || !subjectRaw || !messageRaw) {
+      document.getElementById("formStatus").textContent =
+        "Please fill all required fields.";
+      return;
+    }
+
+    const subject = encodeURIComponent(subjectRaw);
+
+    const bodyText =
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${messageRaw}`;
+
+    const body = encodeURIComponent(bodyText);
+
+    const mailtoLink =
+      `mailto:${RECEIVER_EMAIL}?subject=${subject}&body=${body}`;
+
+   
+
+    window.location.href = mailtoLink;
+  });
+});
 
       window.addEventListener("scroll", setActive, { passive: true });
       window.addEventListener("load", setActive);
